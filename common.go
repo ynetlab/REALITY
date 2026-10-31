@@ -600,6 +600,9 @@ type Config struct {
 	MaxTimeDiff  time.Duration
 	ShortIds     map[[8]byte]bool
 
+	// NonPQMode selects per-listener compatibility: "none" (default), "legacy", or "all".
+	NonPQMode string
+
 	Mldsa65Key *mldsa.PrivateKey
 
 	LimitFallbackUpload   LimitFallback
@@ -1054,6 +1057,7 @@ func (c *Config) Clone() *Config {
 		PrivateKey:            c.PrivateKey,
 		MinClientVer:          c.MinClientVer,
 		MaxClientVer:          c.MaxClientVer,
+		NonPQMode:             c.NonPQMode,
 		MaxTimeDiff:           c.MaxTimeDiff,
 		ShortIds:              c.ShortIds,
 		Mldsa65Key:            c.Mldsa65Key,
